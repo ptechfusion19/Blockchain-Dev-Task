@@ -16,10 +16,7 @@ contract GovToken is ERC20, ERC20Permit, ERC20Votes {
 
     // ===== Required overrides for OZ v5 =====
     // OZ v5 uses _update hook for vote checkpoint updates
-    function _update(address from, address to, uint256 value)
-        internal
-        override(ERC20, ERC20Votes)
-    {
+    function _update(address from, address to, uint256 value) internal override(ERC20, ERC20Votes) {
         super._update(from, to, value);
     }
 
@@ -28,4 +25,3 @@ contract GovToken is ERC20, ERC20Permit, ERC20Votes {
         return super.nonces(owner);
     }
 }
-
