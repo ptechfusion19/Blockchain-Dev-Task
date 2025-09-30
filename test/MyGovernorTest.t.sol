@@ -63,7 +63,7 @@ contract MyGovernorTest is Test {
         string memory description = "Store 777 in Box";
         bytes memory encodedFunctionCall = abi.encodeWithSignature("store(uint256)", valueToStore);
 
-        // Ensure arrays are fresh (avoid accidental duplicates between tests)
+        // Ensure arrays are fresh (avoid accidental duplicates between tests)..
         delete addressesToCall;
         delete values;
         delete functionCalls;
