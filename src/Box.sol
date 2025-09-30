@@ -1,13 +1,15 @@
 // SPDX-License-Identifier: MIT
-
-pragma solidity ^0.8.18;
+pragma solidity ^0.8.20;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Box is Ownable(msg.sender) {
+contract Box is Ownable {
     uint256 private s_number;
 
     event NumberChanged(uint256 number);
+
+    // Forward the deployer as the initial owner (OZ v5 expects initialOwner in constructor)
+    constructor() Ownable(msg.sender) {}
 
     function store(uint256 newNumber) public onlyOwner {
         s_number = newNumber;
