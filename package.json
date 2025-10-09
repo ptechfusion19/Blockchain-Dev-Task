@@ -1,0 +1,21 @@
+{
+  "name": "0x-matcha-swap",
+  "version": "1.0.0",
+  "description": "This repo contains all my tasks at ProgrammX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptechfusion19/Blockchain-Intern-Task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ptechfusion19/Blockchain-Intern-Task/issues"
+  },
+  "homepage": "https://github.com/ptechfusion19/Blockchain-Intern-Task#readme"
+}
