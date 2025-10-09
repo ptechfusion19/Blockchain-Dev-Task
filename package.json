@@ -1,10 +1,10 @@
 {
   "name": "0x-matcha-swap",
   "version": "1.0.0",
-  "description": "This repo contains all my tasks at ProgrammX",
+  "description": "Terminal-based 0x Swap (Permit2) client for Sepolia",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/ptechfusion19/Blockchain-Intern-Task/issues"
   },
-  "homepage": "https://github.com/ptechfusion19/Blockchain-Intern-Task#readme"
+  "homepage": "https://github.com/ptechfusion19/Blockchain-Intern-Task#readme",
+  "dependencies": {
+    "axios": "^1.12.2",
+    "chalk": "^5.6.2",
+    "dotenv": "^17.2.3",
+    "ethers": "^5.8.0",
+    "inquirer": "^8.2.7",
+    "ora": "^6.3.1",
+    "qs": "^6.14.0"
+  }
 }

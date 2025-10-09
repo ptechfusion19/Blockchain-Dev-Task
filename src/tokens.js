@@ -1,23 +1,18 @@
 // src/tokens.js
-// Sepolia token addresses — use these as example pairs. Always verify on a block explorer if you want to be 100% sure.
-//
-// ETH pseudo address used by 0x
-const ETH_TOKEN = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE';
+// MAINNET token addresses — canonical commonly-used tokens.
+// Make sure your .env is set to CHAIN_ID=1 and RPC_URL points to a mainnet provider.
 
-// Example Sepolia contracts (check on Sepolia Etherscan if you want to change / verify):
-// WETH (Sepolia deploy commonly used by Uniswap deployments).
-// (source: Uniswap deployments / Sepolia references)
-const WETH = '0xfff9976782d46cc05630d1f6ebab18b2324d6b14'; // Sepolia WETH. :contentReference[oaicite:9]{index=9}
+const ETH_TOKEN = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'; // 0x pseudo-address for native ETH
 
-// Common test USDC/DAI addresses on Sepolia — these vary: verify on etherscan before use.
-const USDC = '0xf08a50178dfcde18524640ea6618a1f965821715'; // example Sepolia USDC listing. :contentReference[oaicite:10]{index=10}
-const DAI  = '0x3e622317f8c93f7328350cf0b56d9ed4c620c5d6'; // example Sepolia DAI (community-provided). :contentReference[oaicite:11]{index=11}
+const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'; // Mainnet WETH
+const USDC = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'; // Mainnet USDC
+const DAI  = '0x6B175474E89094C44Da98b954EedeAC495271d0F'; // Mainnet DAI
 
 module.exports = {
   TOKENS: {
     ETH: { symbol: 'ETH', address: ETH_TOKEN, decimals: 18 },
     WETH: { symbol: 'WETH', address: WETH, decimals: 18 },
-    USDC: { symbol: 'USDC', address: USDC, decimals: 6 },
+    USDC: { symbol: 'USDC', address: USDC, decimals: 6 },   
     DAI:  { symbol: 'DAI',  address: DAI,  decimals: 18 },
   },
   ETH_TOKEN
