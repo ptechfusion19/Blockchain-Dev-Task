@@ -59,7 +59,7 @@ const config = require('./config');
 const provider = new ethers.providers.JsonRpcProvider(config.RPC_URL, config.CHAIN_ID);
 const wallet = new ethers.Wallet(config.PRIVATE_KEY || ethers.constants.HashZero, provider);
 const signer = wallet.connect(provider);
-const walletAddress = "0xCBc444c98CD48baAa9a975AA6660899C52961Cb0";
+const walletAddress = "0x56Eddb7aa87536c09CCc2793473599fD21A8b17F";
 
 async function main() {
   console.log(chalk.green('\n0x Swap (Permit2) — Terminal Client\n'));
