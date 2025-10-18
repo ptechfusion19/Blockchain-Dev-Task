@@ -4,7 +4,7 @@
   "description": "Rubic.finance swap simulation tool (no signing, no broadcast) - analysis only",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js --example 1"
+    "start": "node src/index.js"
   },
   "author": "You",
   "license": "MIT",
