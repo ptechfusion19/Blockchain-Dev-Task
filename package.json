@@ -1,0 +1,28 @@
+{
+  "name": "rubic-simulator",
+  "version": "1.0.0",
+  "description": "Rubic.finance swap simulation tool (no signing, no broadcast) - analysis only",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js --example 1"
+  },
+  "author": "You",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "dotenv": "^16.0.0",
+    "ethers": "^6.0.0",
+    "chalk": "^5.0.0",
+    "yargs": "^17.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptechfusion19/Blockchain-Intern-Task.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ptechfusion19/Blockchain-Intern-Task/issues"
+  },
+  "homepage": "https://github.com/ptechfusion19/Blockchain-Intern-Task#readme"
+}
