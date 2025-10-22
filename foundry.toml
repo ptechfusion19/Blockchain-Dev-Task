@@ -11,8 +11,4 @@ fs_permissions = [{ access = "read", path = "./"}]
 [rpc_endpoints]
 amoy = "${AMOY_RPC_URL}"
 
-polygon-amoy = {
-    key = "${AMOY_RPC_URL}",
-    url = "https://polygon-amoy.g.alchemy.com/v2/jSN4mSWwBQfvvBFHxPA65"
-}
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
