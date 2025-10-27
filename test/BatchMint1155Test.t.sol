@@ -7,16 +7,16 @@ import {IERC1155Receiver} from "@openzeppelin/contracts/token/ERC1155/IERC1155Re
 
 contract MockERC1155Receiver is IERC1155Receiver {
     // Accept single transfers
-    function onERC1155Received(
-        address, address, uint256, uint256, bytes calldata
-    ) external pure returns (bytes4) {
+    function onERC1155Received(address, address, uint256, uint256, bytes calldata) external pure returns (bytes4) {
         return IERC1155Receiver.onERC1155Received.selector;
     }
 
     // Accept batch transfers
-    function onERC1155BatchReceived(
-        address, address, uint256[] calldata, uint256[] calldata, bytes calldata
-    ) external pure returns (bytes4) {
+    function onERC1155BatchReceived(address, address, uint256[] calldata, uint256[] calldata, bytes calldata)
+        external
+        pure
+        returns (bytes4)
+    {
         return IERC1155Receiver.onERC1155BatchReceived.selector;
     }
 
