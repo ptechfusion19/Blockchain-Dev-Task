@@ -8,7 +8,7 @@ This repo contains the contract, Foundry scripts, and Solidity tests so you can 
 ## What this project does
 
 * Mint the same ERC-1155 token (`TOKEN_ID = 1`) to multiple addresses in one owner-only transaction.
-* Two distribution functions:
+* Two distribution functions:-
 
   * `mintAndDistributeSameAmount(address[] recipients, uint256 amount)` — mint same `amount` to each recipient.
   * `mintAndDistributeVariableAmounts(address[] recipients, uint256[] amounts)` — mint a different `amounts[i]` to each `recipients[i]`.
