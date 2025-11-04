@@ -1,0 +1,27 @@
+{
+  "name": "four-meme-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptechfusion19/Blockchain-Intern-Task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/ptechfusion19/Blockchain-Intern-Task/issues"
+  },
+  "homepage": "https://github.com/ptechfusion19/Blockchain-Intern-Task#readme",
+  "dependencies": {
+    "bs58": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "ethers": "^6.15.0",
+    "four-flap-meme-sdk": "^1.1.80"
+  }
+}
