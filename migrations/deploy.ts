@@ -8,5 +8,5 @@ module.exports = async function (provider: anchor.AnchorProvider) {
   // Configure client to use the provider.
   anchor.setProvider(provider);
 
-  // Add your deploy script here.
+  console.log("Migration script executed (no additional on-chain initialization performed).");
 };
