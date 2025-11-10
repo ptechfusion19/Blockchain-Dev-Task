@@ -1,19 +1,28 @@
 {
   "license": "ISC",
   "scripts": {
-    "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
-    "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
-    "test:ts": "mocha -r ts-node/register tests/**/*.ts --exit"
+    "build": "anchor build",
+    "test": "anchor test",
+    "ts-test": "mocha -r ts-node/register tests/**/*.ts --exit",
+    "create": "ts-node scripts/create.ts",
+    "fetch": "ts-node scripts/fetch.ts",
+    "update": "ts-node scripts/update.ts",
+    "read": "ts-node scripts/read.ts",
+    "delete": "ts-node scripts/delete.ts",
+    "api": "node api/server.js",
+    "api:dev": "nodemon api/server.js"
   },
   "devDependencies": {
     "@coral-xyz/anchor": "^0.32.1",
     "@solana/web3.js": "^1.98.4",
     "@types/bn.js": "^5.1.0",
     "@types/chai": "^4.3.20",
+    "@types/jest": "^30.0.0",
     "@types/mocha": "^9.1.1",
     "bn.js": "^5.2.2",
     "chai": "^4.5.0",
     "mocha": "^9.2.2",
+    "nodemon": "^3.1.10",
     "prettier": "^2.6.2",
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
@@ -36,5 +45,9 @@
   "bugs": {
     "url": "https://github.com/ptechfusion19/Blockchain-Intern-Task/issues"
   },
-  "homepage": "https://github.com/ptechfusion19/Blockchain-Intern-Task#readme"
+  "homepage": "https://github.com/ptechfusion19/Blockchain-Intern-Task#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
 }

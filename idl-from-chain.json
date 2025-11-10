@@ -1,0 +1,388 @@
+{
+  "accounts": [
+    {
+      "discriminator": [
+        92,
+        157,
+        163,
+        130,
+        72,
+        254,
+        86,
+        216
+      ],
+      "name": "Item"
+    }
+  ],
+  "address": "AiBawWM1dhGBfgs8dR8QidWhvFEu6MhfrtohbwCqeb8u",
+  "errors": [
+    {
+      "code": 12000,
+      "msg": "Name exceeds maximum length (50 bytes)",
+      "name": "NameTooLong"
+    },
+    {
+      "code": 12001,
+      "msg": "Unauthorized",
+      "name": "Unauthorized"
+    },
+    {
+      "code": 12002,
+      "msg": "Invalid input",
+      "name": "InvalidInput"
+    }
+  ],
+  "events": [
+    {
+      "discriminator": [
+        174,
+        202,
+        62,
+        39,
+        121,
+        132,
+        229,
+        150
+      ],
+      "name": "ItemEvent"
+    }
+  ],
+  "instructions": [
+    {
+      "accounts": [
+        {
+          "docs": [
+            "The user who pays for initialization and becomes the owner"
+          ],
+          "name": "user",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "docs": [
+            "The PDA account to store the Item. PDA =",
+            "seeds: [b\"item\", user.key(), id.to_le_bytes()]"
+          ],
+          "name": "item",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  116,
+                  101,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "arg",
+                "path": "id"
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "address": "11111111111111111111111111111111",
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "id",
+          "type": "u64"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "u32"
+        }
+      ],
+      "discriminator": [
+        24,
+        30,
+        200,
+        40,
+        5,
+        28,
+        7,
+        119
+      ],
+      "docs": [
+        "Create a new Item account (PDA: [b\"item\", owner, id_le_bytes])"
+      ],
+      "name": "create"
+    },
+    {
+      "accounts": [
+        {
+          "docs": [
+            "The owner (must sign and will receive the rent-exempt lamports from close)"
+          ],
+          "name": "owner",
+          "relations": [
+            "item"
+          ],
+          "signer": true
+        },
+        {
+          "docs": [
+            "closing the account returns lamports to `owner`"
+          ],
+          "name": "item",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  116,
+                  101,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              },
+              {
+                "kind": "arg",
+                "path": "id"
+              }
+            ]
+          },
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "_id",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        165,
+        204,
+        60,
+        98,
+        134,
+        15,
+        83,
+        134
+      ],
+      "docs": [
+        "Delete (close) the Item account and return lamports to the owner"
+      ],
+      "name": "delete"
+    },
+    {
+      "accounts": [
+        {
+          "docs": [
+            "The owner's public key is used to derive the PDA; this account does not need to sign",
+            "so we accept an UncheckedAccount<'info> to allow read by anyone who knows owner+id.",
+            "",
+            "runtime checks are required because the PDA check on `item` verifies correctness."
+          ],
+          "name": "owner"
+        },
+        {
+          "docs": [
+            "The item account (readonly)"
+          ],
+          "name": "item",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  116,
+                  101,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              },
+              {
+                "kind": "arg",
+                "path": "id"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "_id",
+          "type": "u64"
+        }
+      ],
+      "discriminator": [
+        116,
+        184,
+        159,
+        206,
+        179,
+        224,
+        178,
+        42
+      ],
+      "docs": [
+        "Read: emits an event containing the account data for convenience."
+      ],
+      "name": "read"
+    },
+    {
+      "accounts": [
+        {
+          "docs": [
+            "The owner (must sign)"
+          ],
+          "name": "owner",
+          "relations": [
+            "item"
+          ],
+          "signer": true
+        },
+        {
+          "docs": [
+            "account must be mutable; enforce PDA derivation and owner equality"
+          ],
+          "name": "item",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  105,
+                  116,
+                  101,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "owner"
+              },
+              {
+                "kind": "arg",
+                "path": "id"
+              }
+            ]
+          },
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "_id",
+          "type": "u64"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "u32"
+        }
+      ],
+      "discriminator": [
+        219,
+        200,
+        88,
+        176,
+        158,
+        63,
+        253,
+        127
+      ],
+      "docs": [
+        "Update name and value of an existing Item (only owner)"
+      ],
+      "name": "update"
+    }
+  ],
+  "metadata": {
+    "description": "Created with Anchor",
+    "name": "anchor_crud_item",
+    "spec": "0.1.0",
+    "version": "0.1.0"
+  },
+  "types": [
+    {
+      "docs": [
+        "Account storing the simple struct (name stored as fixed-length byte array)"
+      ],
+      "name": "Item",
+      "type": {
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "name",
+            "type": {
+              "array": [
+                "u8",
+                50
+              ]
+            }
+          },
+          {
+            "name": "value",
+            "type": "u32"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "docs": [
+        "Event emitted by the `read` instruction"
+      ],
+      "name": "ItemEvent",
+      "type": {
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "u32"
+          }
+        ],
+        "kind": "struct"
+      }
+    }
+  ]
+}

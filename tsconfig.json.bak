@@ -12,11 +12,9 @@
     "types": ["node"]
   },
   "include": [
-    "tests/**/*.ts",
+    "tests/**/*.ts", 
     "scripts/**/*.ts",
-    "api/**/*.ts",
-    "api/**/*.js",
-    "scripts/**/*.js"
+    "api/**/*.ts"
   ],
   "exclude": [
     "node_modules",
