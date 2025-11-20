@@ -1,3 +1,4 @@
+// Parameters & Arguments
 fn another_function(num: i32) {
     println!("Another function called with number: {}", num);
 }
