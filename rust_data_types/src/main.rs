@@ -31,19 +31,18 @@ fn main() {
     println!("Struct Point coordinates: ({}, {})", point.x, point.y);
 
     // // Enum
-    // enum Direction {
-    //     Up,
-    //     Down,
-    //     Left,
-    //     Right,
-    // }
-    // let dir = Direction::Up;
-    // match dir {
-    //     Direction::Up => println!("Direction: Up"),
-    //     Direction::Down => println!("Direction: Down"),
-    //     Direction::Left => println!("Direction: Left"),
-    //     Direction::Right => println!("Direction: Right"),
-    // }
+    enum Snack {
+        Apple,
+        // Banana,
+        // Orange,
+    }
+    let my_snack = Snack::Apple; // I chose an Apple!
+    let snack_message = match my_snack {
+        Snack::Apple => "You selected an Apple!",
+        // Snack::Banana => "You selected a Banana!",
+        // Snack::Orange => "You selected an Orange!",
+    };
+    println!("{}", snack_message);
 
     // Practice function calls
     practice::integers();
@@ -53,5 +52,7 @@ fn main() {
     practice::boolean();
     practice::characters();
     practice::tuples();
-
+    practice::arrays();
+    practice::structs();
+    practice::enums();
 }

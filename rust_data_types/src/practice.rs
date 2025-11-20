@@ -112,17 +112,63 @@ pub fn characters() {
     for char in ['a', 'β', '中', '😊'].iter() {
         println!("Character: {}", char);
     }
-
 }
 
 pub fn tuples() {
     // Tuple Type
 
-    let person: (&str, i32, f64) = ("Abdullah", 30, 5.5); // Tuple with mixed types
+    let person: (&str, i32, f64) = ("Abdullah", 22, 5.5); // Tuple with mixed types
 
     let (name, age, height) = person; // Destructuring
     println!("Name: {}, Age: {}, Height: {}", name, age, height);
 
     let second_element = person.1; // Accessing by index
     println!("Second element (Age): {}", second_element);
+}
+
+pub fn arrays() {
+    // Array Type
+
+    let numbers: [i32; 5] = [1, 2, 3, 4, 5]; // Array of 5 integers
+
+    println!("Array elements:");
+    for number in numbers.iter() {
+        println!("{}", number);
+    }
+
+    let first_element = numbers[0]; // Accessing by index
+    println!("First element: {}", first_element);
+}
+
+pub fn structs() {
+    // Struct Type
+
+    struct Person {
+        name: String,
+        age: u8,
+    }
+    let person = Person {
+        name: String::from("Abdullah"),
+        age: 22,
+    };
+    println!("Name: {}, Age: {}", person.name, person.age);
+}
+
+pub fn enums() {
+    // Enum Type
+
+    enum TrafficLight {
+        Red,
+        Yellow,
+        Green,
+    }
+
+    let my_light = TrafficLight::Yellow; // I chose Yellow!
+    let light_message = match my_light {
+        TrafficLight::Red => "Stop!",
+        TrafficLight::Yellow => "Caution!",
+        TrafficLight::Green => "Go!",
+        
+    };
+    println!("{}", light_message);
 }
