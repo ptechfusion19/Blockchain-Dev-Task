@@ -114,3 +114,15 @@ pub fn characters() {
     }
 
 }
+
+pub fn tuples() {
+    // Tuple Type
+
+    let person: (&str, i32, f64) = ("Abdullah", 30, 5.5); // Tuple with mixed types
+
+    let (name, age, height) = person; // Destructuring
+    println!("Name: {}, Age: {}, Height: {}", name, age, height);
+
+    let second_element = person.1; // Accessing by index
+    println!("Second element (Age): {}", second_element);
+}

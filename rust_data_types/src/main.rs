@@ -52,5 +52,6 @@ fn main() {
     practice::numeric_operations();
     practice::boolean();
     practice::characters();
+    practice::tuples();
 
 }
