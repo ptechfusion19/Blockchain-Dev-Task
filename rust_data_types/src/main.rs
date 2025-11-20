@@ -16,6 +16,13 @@ fn main() {
     let (x, y, z) = tuple; // Destructuring a tuple
     println!("Tuple values: {}, {}, {}", x, y, z);
 
+    // Grouping different types in a tuple
+    let trip_bag = ("toothbrush", "pajamas", 5); // Different things together!
+    println!(
+        "Trip bag contains: {:?}, {:?}, and {} pairs of socks.",
+        trip_bag.0, trip_bag.1, trip_bag.2
+    );
+
     // Array
     let array: [i32; 5] = [1, 2, 3, 4, 5]; // Array of 5 integers
     println!("Array values: {:?}", array);

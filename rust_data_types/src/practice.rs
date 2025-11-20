@@ -158,17 +158,16 @@ pub fn enums() {
     // Enum Type
 
     enum TrafficLight {
-        Red,
+        //Red,
         Yellow,
-        Green,
+        //Green,
     }
 
     let my_light = TrafficLight::Yellow; // I chose Yellow!
     let light_message = match my_light {
-        TrafficLight::Red => "Stop!",
+        //TrafficLight::Red => "Stop!",
         TrafficLight::Yellow => "Caution!",
-        TrafficLight::Green => "Go!",
-        
+        //TrafficLight::Green => "Go!",
     };
     println!("{}", light_message);
 }
