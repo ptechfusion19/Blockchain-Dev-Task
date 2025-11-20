@@ -1,8 +1,8 @@
-fn main() {
-    println!("Hello, world!");
-    another_function();
+fn another_function(num: i32) {
+    println!("Another function called with number: {}", num);
 }
 
-fn another_function() {
-    println!("Another function called!");
+fn main() {
+    println!("Hello, world!");
+    another_function(22);
 }
