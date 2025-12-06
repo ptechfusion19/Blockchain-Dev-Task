@@ -4,7 +4,7 @@ use anchor_spl::token;
 
 declare_id!("9PznwD37XbYGLsDPfrxumNBBUY1HeBPb4uneRkX3r8vM");
 
-const ADMIN_PUBKEY: &str = "Fskji1sm9H8QwZBGmuRTTie6B111RhCfLtbALMaNRkt";
+const ADMIN_PUBKEY: &str = "Your_Admin_Public_KeyHere"; // Replace with actual admin public key
 
 #[program]
 pub mod user_card_program {
@@ -56,13 +56,13 @@ pub mod user_card_program {
             &[bump],                             // Bump seed
         ]];
 
-        // Mint the tokens to user's token account
+        // Mint the tokens to user's token account using the provided mint_authority
         let cpi_ctx = CpiContext::new_with_signer(
             ctx.accounts.token_program.to_account_info(),
             token::MintTo {
-                mint: ctx.accounts.card_mint.to_account_info(), // jo token mint karna hai (Gold/Silver etc)
-                to: ctx.accounts.user_token_account.to_account_info(), // User ka wallet jahan token jayega
-                authority: ctx.accounts.user_card.to_account_info(),   // Authority (Hamara PDA)
+                mint: ctx.accounts.card_mint.to_account_info(),
+                to: ctx.accounts.user_token_account.to_account_info(),
+                authority: ctx.accounts.mint_authority.to_account_info(),
             },
             signer_seeds,
         );
@@ -77,7 +77,6 @@ pub mod user_card_program {
         acct.card_type = card_type;
         acct.amount_paid = amount_paid;
         acct.tokens_minted = tokens_to_mint;
-        //acct.status = AccountStatus::Active;
         Ok(())
     }
 
@@ -101,7 +100,7 @@ pub mod user_card_program {
             .checked_add(amount)
             .ok_or(ErrorCode::ArithmeticError)?;
 
-        // ⚠️ TRANSFER LOGIC
+        // TRANSFER LOGIC
         **user_card.to_account_info().try_borrow_mut_lamports()? = new_user_balance;
         **admin.to_account_info().try_borrow_mut_lamports()? = new_admin_balance;
 
@@ -131,6 +130,9 @@ pub struct InitializeUserCard<'info> {
     /// CHECK: User's token account jahan token jayega (SPL Token Account)
     #[account(mut)]
     pub user_token_account: Account<'info, token::TokenAccount>,
+
+    /// CHECK: Mint authority that can mint tokens
+    pub mint_authority: AccountInfo<'info>,
 
     /// Required SPL token program
     pub token_program: Program<'info, token::Token>,
@@ -172,12 +174,6 @@ pub enum CardType {
     Gold,
     Platinum,
 }
-
-// #[derive(AnchorSerialize, AnchorDeserialize, Clone, PartialEq, Eq, Debug)]
-// pub enum AccountStatus {
-//     Active,
-//     Inactive,
-// }
 
 #[error_code]
 pub enum ErrorCode {

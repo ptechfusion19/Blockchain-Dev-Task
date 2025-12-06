@@ -1,0 +1,211 @@
+{
+  "address": "9PznwD37XbYGLsDPfrxumNBBUY1HeBPb4uneRkX3r8vM",
+  "metadata": {
+    "name": "user_card_program",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "initialize_user_card",
+      "discriminator": [
+        64,
+        119,
+        250,
+        206,
+        151,
+        65,
+        139,
+        59
+      ],
+      "accounts": [
+        {
+          "name": "user_card",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  95,
+                  99,
+                  97,
+                  114,
+                  100
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "authority"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "card_mint",
+          "writable": true
+        },
+        {
+          "name": "user_token_account",
+          "writable": true
+        },
+        {
+          "name": "mint_authority",
+          "signer": true
+        },
+        {
+          "name": "token_program",
+          "docs": [
+            "Required SPL token program"
+          ],
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "card_type",
+          "type": {
+            "defined": {
+              "name": "CardType"
+            }
+          }
+        },
+        {
+          "name": "amount_paid",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "withdraw_funds",
+      "discriminator": [
+        241,
+        36,
+        29,
+        111,
+        208,
+        31,
+        104,
+        217
+      ],
+      "accounts": [
+        {
+          "name": "user_card",
+          "writable": true
+        },
+        {
+          "name": "admin",
+          "writable": true,
+          "signer": true
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "UserCardAccount",
+      "discriminator": [
+        221,
+        231,
+        133,
+        254,
+        159,
+        163,
+        158,
+        181
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "Unauthorized"
+    },
+    {
+      "code": 6001,
+      "name": "InsufficientPayment",
+      "msg": "Insufficient payment for selected card type"
+    },
+    {
+      "code": 6002,
+      "name": "InsufficientFunds",
+      "msg": "Insufficient funds in user card account"
+    },
+    {
+      "code": 6003,
+      "name": "ArithmeticError",
+      "msg": "Arithmetic Overflow/Underflow"
+    }
+  ],
+  "types": [
+    {
+      "name": "CardType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Bronze"
+          },
+          {
+            "name": "Silver"
+          },
+          {
+            "name": "Gold"
+          },
+          {
+            "name": "Platinum"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UserCardAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "pubkey"
+          },
+          {
+            "name": "card_type",
+            "type": {
+              "defined": {
+                "name": "CardType"
+              }
+            }
+          },
+          {
+            "name": "amount_paid",
+            "type": "u64"
+          },
+          {
+            "name": "tokens_minted",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}

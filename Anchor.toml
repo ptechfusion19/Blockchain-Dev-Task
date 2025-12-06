@@ -12,7 +12,7 @@ my_user_card = "9PznwD37XbYGLsDPfrxumNBBUY1HeBPb4uneRkX3r8vM"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

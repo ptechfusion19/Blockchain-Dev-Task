@@ -1,0 +1,181 @@
+{
+  "info": {
+    "_postman_id": "solana-card-api",
+    "name": "Solana Card Buying API",
+    "description": "API for buying cards and minting tokens on Solana",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3001/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Buy Card (Direct)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cardType\": 0,\n  \"amount\": 125000000,\n  \"userTokenAccountPubkey\": \"C6TSsaFs2KmNZ4NZGbMWsykMtMLzNanCYc2GCXJwJgVT\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/buy-card",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["api", "buy-card"]
+        },
+        "description": "Buy a card by providing cardType, amount in lamports, and user token account.\n\nCardTypes:\n- 0 = Bronze (0.125 SOL = 125,000,000 lamports)\n- 1 = Silver (0.25 SOL = 250,000,000 lamports)\n- 2 = Gold (0.5 SOL = 500,000,000 lamports)\n- 3 = Platinum (1 SOL = 1,000,000,000 lamports)\n\nNote: User private key is read from .env"
+      }
+    },
+    {
+      "name": "Get User Card",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3001/api/user-card?userPubkey=FQ7zu26PVPCbiDuXtbFtHzMeVVtJSfQR4xwQDjsz8H7t",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["api", "user-card"],
+          "query": [
+            {
+              "key": "userPubkey",
+              "value": "FQ7zu26PVPCbiDuXtbFtHzMeVVtJSfQR4xwQDjsz8H7t"
+            }
+          ]
+        },
+        "description": "Fetch the card details for a specific user from their PDA account"
+      }
+    },
+    {
+      "name": "Withdraw Funds (Admin Only)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"amount\": 125000000,\n  \"userCardPubkey\": \"7A9VPgU8WNhzytKrZJV8KsYDGxis7CJEH6JHKEGLS2Nx\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3001/api/withdraw",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["api", "withdraw"]
+        },
+        "description": "Withdraw collected funds from a user card account (Admin only).\n\nNote: Admin private key is read from .env\nAmount is in lamports"
+      }
+    },
+    {
+      "name": "Get Account Balance",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3001/api/account-balance?userPubkey=FQ7zu26PVPCbiDuXtbFtHzMeVVtJSfQR4xwQDjsz8H7t",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["api", "account-balance"],
+          "query": [
+            {
+              "key": "userPubkey",
+              "value": "FQ7zu26PVPCbiDuXtbFtHzMeVVtJSfQR4xwQDjsz8H7t"
+            }
+          ]
+        },
+        "description": "Get the balance (in lamports and SOL) of a user card PDA account"
+      }
+    },
+    {
+      "name": "Estimate Tokens",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3001/api/estimate-tokens?cardType=0&amount=125000000",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["api", "estimate-tokens"],
+          "query": [
+            {
+              "key": "cardType",
+              "value": "0"
+            },
+            {
+              "key": "amount",
+              "value": "125000000"
+            }
+          ]
+        },
+        "description": "Estimate tokens you'll receive for a given card type and amount"
+      }
+    },
+    {
+      "name": "Verify Admin",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3001/api/verify-admin?adminPubkey=Fskji1sm9H8QwZBGmuRTTie6B111RhCfLtbALMaNRkt",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["api", "verify-admin"],
+          "query": [
+            {
+              "key": "adminPubkey",
+              "value": "Fskji1sm9H8QwZBGmuRTTie6B111RhCfLtbALMaNRkt"
+            }
+          ]
+        },
+        "description": "Verify if a given public key is the admin"
+      }
+    },
+    {
+      "name": "Prepare Buy Card (Get Mint Info)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3001/api/prepare-buy-card?userPubkey=FQ7zu26PVPCbiDuXtbFtHzMeVVtJSfQR4xwQDjsz8H7t",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3001",
+          "path": ["api", "prepare-buy-card"],
+          "query": [
+            {
+              "key": "userPubkey",
+              "value": "FQ7zu26PVPCbiDuXtbFtHzMeVVtJSfQR4xwQDjsz8H7t"
+            }
+          ]
+        },
+        "description": "Get mint address and instructions for creating a token account"
+      }
+    }
+  ]
+}
