@@ -1,6 +1,6 @@
-# Blockchain Developer Intern Tasks
+# Blockchain Developer Tasks
 
-This repository contains all blockchain development tasks completed during my internship at ProgrammX. Each branch represents a different project focusing on various blockchain technologies including Solana, Ethereum, and cross-chain protocols.
+This repository contains all blockchain development tasks completed during my start at ProgrammX. Each branch represents a different project focusing on various blockchain technologies including Solana, Ethereum, and cross-chain protocols.
 
 ##  Projects Overview
 
